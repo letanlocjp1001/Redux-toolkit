@@ -1,58 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import React from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { Layout, Typography, Space } from 'antd'
+import { Navbar } from './components'
+import { Home, News, Exchanges, Cryptocurrencies, CryptoDetails } from './pages'
+
+import './App.css'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
-  );
+    <>
+      <Router>
+        <div className='app'>
+          <div className='navbar'>
+            <Navbar />
+          </div>
+          <div className='main'>
+            <Layout>
+              <div className='routes'>
+                <Routes>
+                  <Route path='/' element='<Homepage/>' />
+                  <Route path='/exchanges' element='<Exchanges/>' />
+                  <Route
+                    path='/cryptocurrencies'
+                    element='<Cryptocurrencies/>'
+                  />
+                  <Route path='/crypto/:coinId' element='<CryptoDetails/>' />
+                  <Route path='/news' element='<News/>' />
+                </Routes>
+              </div>
+            </Layout>
+          </div>
+          <div className='footer'></div>
+        </div>
+      </Router>
+    </>
+  )
 }
 
-export default App;
+export default App
