@@ -1,9 +1,10 @@
 import React from 'react'
+import { Spin } from 'antd'
 
 const Spinner = () => {
   return (
-    <div className='loadingSpinnerContainer'>
-      <div className='loadingSpinner'></div>
+    <div className='loader'>
+      <Spin />
     </div>
   )
 }
